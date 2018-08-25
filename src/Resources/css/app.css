@@ -164,7 +164,7 @@ footer .footer_discl {
 .featured_wrapper {
     margin: 0 auto;
     width: 1280px;
-    margin-top: 90px;
+    margin-top: -4%;
     height: 800px;
     overflow: hidden;
 }
