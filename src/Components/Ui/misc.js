@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
 export const Tag = (props) =>{
     const template = <div
     style={{
@@ -49,4 +50,16 @@ export const reverseArray = (actualArray) => {
             reversedArray.push(actualArray[i])
     }
        return reversedArray;
+}
+
+export const validate = (element)=> {
+
+    let error = [true,''];
+
+    if(element.validation.required){
+        const valid = element.value.trim() !== '';
+        const message = `${!valid ? 'This field is required':''}`;
+        error = !valid ? [valid,message]: error;
+    }
+    return error;
 }
