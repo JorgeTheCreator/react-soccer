@@ -1,8 +1,8 @@
-import firebase from "firebase/app";
-import "firebase/app";
-import "firebase/database";
-import "firebase/auth";
-
+import firebase from 'firebase/app'
+import 'firebase/app'
+import 'firebase/database'
+import 'firebase/auth'
+import 'firebase/storage'
 
 const config = {
     apiKey: "AIzaSyCrjzdv_hdwbuo0-ayyIrKEbCzdHvhv-Vo",
@@ -12,14 +12,15 @@ const config = {
     storageBucket: "m-city-f8870.appspot.com",
     messagingSenderId: "970528630990"
   };
+firebase.initializeApp(config);
 
-  firebase.initializeApp(config)
+
 
 const firebaseDB = firebase.database();
 const firebaseMatches = firebaseDB.ref('matches');
-const firebasePromotions = firebaseDB.ref("promotions");
-const firebaseTeams = firebaseDB.ref("teams");
-const firebasePlayers = firebaseDB.ref("players")
+const firebasePromotions = firebaseDB.ref('promotions');
+const firebaseTeams = firebaseDB.ref('teams');
+const firebasePlayers = firebaseDB.ref('players');
 
 export {
     firebase,
@@ -29,4 +30,3 @@ export {
     firebasePlayers,
     firebaseDB
 }
-
