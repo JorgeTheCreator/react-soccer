@@ -35,7 +35,7 @@ class AddEditPlayers extends Component {
                 element:'input',
                 value:'',
                 config:{
-                    label: 'Player Last name',
+                    label: 'Player Last Name',
                     name:'lastname_input',
                     type: 'text'
                 },
@@ -50,7 +50,7 @@ class AddEditPlayers extends Component {
                 element:'input',
                 value:'',
                 config:{
-                    label: 'Player number',
+                    label: 'Player Number',
                     name:'number_input',
                     type: 'text'
                 },

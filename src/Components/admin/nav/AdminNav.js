@@ -1,9 +1,11 @@
 import React from 'react';
-import { Link } from "react-router-dom";
-import ListItem from "@material-ui/core/ListItem";
-import {firebase} from "../../../firebase"
+import { Link } from 'react-router-dom';
+import ListItem from '@material-ui/core/ListItem';
+import { firebase } from '../../../firebase';
+
 
 const AdminNav = () => {
+
     const links = [
         {
             title: 'Matches',
@@ -23,39 +25,38 @@ const AdminNav = () => {
         }
     ]
 
-
     const style = {
-        color:'#ffffff',
-        fontWeight:'300',
-        borderBottom:"1px solid #353535"
+        color: '#ffffff',
+        fontWeight: '300',
+        borderBottom:'1px solid #353535'
     }
 
 
-        const renderItem = () =>( 
-                links.map(link =>(
-                    <Link to={link.linkTo} key={link.title}>
-                        <ListItem button style={style} >
-                        {link.title}
-                        </ListItem>
-                    </Link>
-                ))
-        )
-    
-    
-       const logoutHandler = () => {
-            firebase.auth().signOut().then(()=>{
-                console.log("log out succesfull!!")
-            },(error) => {
-                console.log('error loggin out')
-            })
-        }
-    
+    const renderItems = () => (
+        links.map(link => (
+            <Link to={link.linkTo} key={link.title}>
+                <ListItem button style={style}>
+                    {link.title}
+                </ListItem>
+            </Link>
+        ))
+    )
+
+    const logoutHandler = () => {
+        firebase.auth().signOut().then(()=>{
+            console.log('Log out succesfull')
+        },(error)=>{
+            console.log('Error logging out')
+        })
+    }
+
+
     return (
         <div>
-            {renderItem()} 
+            {renderItems()}
             <ListItem button style={style} onClick={()=> logoutHandler()}>
-            log out
-            </ListItem>        
+                Log out
+            </ListItem>
         </div>
     );
 };

@@ -1,26 +1,23 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-
-export const Tag = (props) =>{
+export const Tag = (props) => {
     const template = <div
-    style={{
-        background: props.bck,
-        fontSize: props.size,
-        color: props.color,
-        padding: "5px 10px",
-        display: "inline-block",
-        fontFamily: "Righteous",
-        ...props.add
-
-    }}
+        style={{
+            background: props.bck,
+            fontSize: props.size,
+            color: props.color,
+            padding: '5px 10px',
+            display: 'inline-block',
+            fontFamily: 'Righteous',
+            ...props.add
+        }}
     >
-    {props.children}
+        {props.children}
     </div>
 
-
     if(props.link){
-        return(
+        return (
             <Link to={props.linkto}>
                 {template}
             </Link>
@@ -30,34 +27,33 @@ export const Tag = (props) =>{
     }
 }
 
-export const firebaseLooper = (snapshot) =>{
-    let data= [];
+export const firebaseLooper = (snapshot) => {
+    let data = [];
     snapshot.forEach((childSnapshot)=>{
         data.push({
             ...childSnapshot.val(),
             id: childSnapshot.key
         })
-
-    })
-    return data;
+    });
+    return data
 }
 
 export const reverseArray = (actualArray) => {
+    let reversedArray = [];
 
-    let  reversedArray = [];
-
-    for(let i = actualArray.length-1; i>=0; i--){
-            reversedArray.push(actualArray[i])
+    for(let i= actualArray.length-1;i>=0;i--){
+        reversedArray.push(actualArray[i])
     }
-       return reversedArray;
+    return reversedArray;
 }
 
-export const validate = (element)=> {
 
+export const validate = (element) => {
     let error = [true,''];
+
     if(element.validation.email){
         const valid = /\S+@\S+\.\S+/.test(element.value);
-        const message = `${!valid ? 'Hey, no funny business , MUST be a valid email':''}`;
+        const message = `${!valid ? 'Must be a valid email':''}`;
         error = !valid ? [valid,message]: error;
     }
 
@@ -66,5 +62,6 @@ export const validate = (element)=> {
         const message = `${!valid ? 'This field is required':''}`;
         error = !valid ? [valid,message]: error;
     }
+
     return error;
 }

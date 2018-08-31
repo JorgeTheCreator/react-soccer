@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import AdminLayout from "../../../Hoc/AdminLayout";
+import AdminLayout from '../../../Hoc/AdminLayout';
 
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -10,9 +10,8 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-
-import { firebaseMatches } from "../../../firebase";
-import { firebaseLooper, reverseArray } from '../../Ui/misc'
+import { firebaseMatches } from '../../../firebase';
+import { firebaseLooper, reverseArray } from '../../Ui/misc';
 
 class AdminMatches extends Component {
 
@@ -20,17 +19,19 @@ class AdminMatches extends Component {
         isloading: true,
         matches:[]
     }
+
     componentDidMount(){
-        firebaseMatches.once("value").then((snapshot)=>{
+        firebaseMatches.once('value').then(snapshot=>{
             const matches = firebaseLooper(snapshot);
 
             this.setState({
-                isloading:false,
+                isloading: false,
                 matches:reverseArray(matches)
-            })
+            })            
 
-        })
+        });
     }
+
 
     render() {
         return (
@@ -47,8 +48,7 @@ class AdminMatches extends Component {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {
-                                    this.state.matches ?
+                                { this.state.matches ?
                                     this.state.matches.map((match,i)=>(
                                         <TableRow key={i}>
                                             <TableCell>
@@ -56,40 +56,33 @@ class AdminMatches extends Component {
                                             </TableCell>
                                             <TableCell>
                                                 <Link to={`/admin_matches/edit_match/${match.id}`}>
-                                                    {match.away} <strong> - </strong>{match.local}
+                                                    {match.away} <strong>-</strong> {match.local}
                                                 </Link>
                                             </TableCell>
                                             <TableCell>
-                                                {match.resultAway} <strong> - </strong>{match.resultLocal}
+                                                {match.resultAway} <strong>-</strong> {match.resultLocal}
                                             </TableCell>
                                             <TableCell>
-                                                {
-                                                    match.final === "Yes" ?
+                                                { match.final === "Yes" ?
                                                     <span className="matches_tag_red">Final</span>
-                                                        : 
-                                                    <span className="matches_tag_green">Not played yet</span>
+                                                    :
+                                                    <span className="matches_tag_grenn">Not played yet</span>
                                                 }
                                             </TableCell>
                                         </TableRow>
                                     ))
-                                    
                                     :null
-
                                 }
                             </TableBody>
                         </Table>
                     </Paper>
                     <div className="admin_progress">
-                        {
-                            this.state.isLoading ?
-                            <CircularProgress thickness={7} style={{color:"#9AC6E7"}} />
+                        { this.state.isloading ?
+                            <CircularProgress thickness={7} style={{color:'#98c5e9'}}/>
                             :''
-
                         }
-
                     </div>
                 </div>
-                
             </AdminLayout>
         );
     }

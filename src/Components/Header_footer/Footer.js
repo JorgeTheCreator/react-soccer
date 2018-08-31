@@ -1,5 +1,5 @@
 import React from 'react';
-import { CityLogo} from "../Ui/Icons"
+import { CityLogo } from '../Ui/Icons';
 
 const Footer = () => {
     return (
@@ -9,13 +9,13 @@ const Footer = () => {
                     width="70px"
                     height="70px"
                     link={true}
-                    linkTo="/"           
+                    linkTo="/"
                 />
             </div>
             <div className="footer_discl">
                 Manchester city 2018.All rights reserved.
             </div>
-
+            
         </footer>
     );
 };
